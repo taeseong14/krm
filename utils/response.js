@@ -58,10 +58,9 @@ function response(room, msg, sender, igc, replier, imageDB, packageName) {
                 }
             }
 
-            handler({
-                ...handlerMsg,
-                params: params
-            }, handlerReply, () => {
+            handlerMsg.params = params;
+
+            handler(handlerMsg, handlerReply, () => {
                 next = true;
             });
 

@@ -2,7 +2,7 @@
 
 ## routes
  - [X] add 구현
- - [ ] use 구현
+ - [X] use 구현
 
 ## response
  - [X] response 만들기
