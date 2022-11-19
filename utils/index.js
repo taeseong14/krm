@@ -1,5 +1,5 @@
-var add = require('./add');
-var response = require('./response');
+let add = require('./add');
+let response = require('./response');
 
 module.exports = {
     add: add,
