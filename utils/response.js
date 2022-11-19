@@ -37,7 +37,7 @@ function response(room, msg, sender, igc, replier, imageDB, packageName) {
             let text = arguments[Math.floor(Math.random() * arguments.length)];
             this.text(text);
         },
-        kakaolink: () => { }, // 만드는중
+        kakaolink: () => handlerReply.text('카카오링크는 아직 개발중입니다!'), // 만드는중
         delay: (ms) => java.lang.Thread.sleep(ms),
         read: () => replier.markAsRead()
     }
