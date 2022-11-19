@@ -33,6 +33,14 @@ krm.add('/안녕', (msg, reply) => {
 });
 ```
 
+##### Param 이용
+```js
+krm.add('/주기 [:person] [:money]', (msg, reply) => {
+    let { person, money } = msg.params;
+    reply(person + '님에게 ' + money + '원 을 주셨어요.');
+});
+```
+
 ##### 카카오링크[개발중]
 ```js
 krm.add('/카링', (msg, reply) => {
@@ -62,7 +70,7 @@ krm.add(pattern: string, handler: Handler);
  - pattern: 명령어
    - RegExp(pattern)으로 불러오니 정규식관련 텍스트는 오류 가능성 있 (고칠예정)
    - Params
-     - [:param] 식으로 적으면 `[Msg].params.param`으로 꺼낼 수 있음
+     - [:param] 식으로 적으면 `[Msg](#msg).params.param`으로 꺼낼 수 있음
  - handler: [핸들러](#handler)
 
 > use
@@ -70,13 +78,14 @@ krm.add(pattern: string, handler: Handler);
 krm.use(handler: Handler);
 ```
  - 항상 실행 (이미 break됐을 땐 제외)
+   - express의 cookie-parser처럼 유동적으로 모듈을 넣거나 핸들러 프로퍼티를 원하는 대로 바꾸기 가능 (예제: [example.js](example.js) 8번 줄)
  - handler: [핸들러](#handler)
 
 #### Handler
 
-##### Property
+> Property
 
- - msg
+ - ###### msg
    - text: 메시지 내용
    - params: [:param]으로 생성한 객체
    - 그외 room, sender, igc, imageDB, profileHash(imageDB.profileHash), packageName
