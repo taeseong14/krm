@@ -1,6 +1,8 @@
 /**
  * @typedef Replier
  * @property {function} reply
+ * @property {function} replyRoom
+ * @property {function} markAsRead
  */
 /**
  * @typedef ImageDB
@@ -30,12 +32,14 @@ function response(room, msg, sender, igc, replier, imageDB, packageName) {
 
     let handlerReply = {
         text: (text) => replier.reply(text),
+        textTo: (room, text) => replier.replyRoom(room, text),
         randomText: function () {
             let text = arguments[Math.floor(Math.random() * arguments.length)];
             this.text(text);
         },
         kakaolink: () => { }, // 만드는중
-        delay: (ms) => java.lang.Thread.sleep(ms)
+        delay: (ms) => java.lang.Thread.sleep(ms),
+        read: () => replier.markAsRead()
     }
 
 

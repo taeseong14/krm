@@ -1,4 +1,4 @@
-# Krm - Kakaotalkbot Route Module [v. 1.0.3]
+# Krm - Kakaotalkbot Route Module [1.0.4]
 
 카카오톡봇을 전반적으로 관리해주는 모듈
 

@@ -12,9 +12,11 @@
 /**
  * @typedef Reply
  * @property {function} text
+ * @property {function} textTo
  * @property {function} randomText
  * @property {function} kakaolink
  * @property {function} delay
+ * @property {function} read
  */
 
 /**
@@ -22,6 +24,18 @@
  * @param {Message} msg
  * @param {Reply} reply
  * @param {function} next
+ */
+
+
+/**
+ * @typedef Replier
+ * @property {function} reply
+ * @property {function} replyRoom
+ * @property {function} markAsRead
+ */
+/**
+ * @typedef ImageDB
+ * @property {string} profileHash
  */
 
 
@@ -38,5 +52,8 @@ module.exports = {
      */
     use: require('./use'),
 
+    /**
+     * @type {(room: string, msg: string, sender: string, igc: boolean, replier: Replier, imageDB: ImageDB, packageName: string) => void}
+     */
     response: response
 }
