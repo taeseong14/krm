@@ -38,7 +38,7 @@ krm.add('/안녕', (msg, reply) => {
 ```js
 krm.add('/주기 [:person] [:money]', (msg, reply) => {
     let { person, money } = msg.params;
-    reply(person + '님에게 ' + money + '원 을 주셨어요.');
+    reply.text(person + '님에게 ' + money + '원 을 주셨어요.');
 });
 ```
 
