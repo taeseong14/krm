@@ -1,7 +1,13 @@
+/**
+ * Add Route
+ * @param {string} pattern 
+ * @param {import('./').Handler} handler
+ * @returns {void}
+ */
 function add(pattern, handler) {
-    if (!typeof pattern === 'string')
+    if (typeof pattern !== 'string')
         throw new Error('add: pattern must be a string');
-    if (!typeof handler === 'function')
+    if (typeof handler !== 'function')
         throw new Error('add: handler must be a function');
 
     this.handlers.push({

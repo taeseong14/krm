@@ -27,30 +27,10 @@
  */
 
 
-/**
- * @typedef Replier
- * @property {function} reply
- * @property {function} replyRoom
- * @property {function} markAsRead
- */
-/**
- * @typedef ImageDB
- * @property {string} profileHash
- */
-
 module.exports = {
-    /**
-     * @type {(pattern: string, handler: Handler) => void}
-     */
     add: require('./add'),
 
-    /**
-     * @type {(handler: Handler) => void}
-     */
     use: require('./use'),
 
-    /**
-     * @type {(room: string, msg: string, sender: string, igc: boolean, replier: Replier, imageDB: ImageDB, packageName: string) => void}
-     */
     response: require('./response')
 }
