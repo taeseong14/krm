@@ -38,9 +38,6 @@
  * @property {string} profileHash
  */
 
-
-let response = require('./response');
-
 module.exports = {
     /**
      * @type {(pattern: string, handler: Handler) => void}
@@ -55,5 +52,5 @@ module.exports = {
     /**
      * @type {(room: string, msg: string, sender: string, igc: boolean, replier: Replier, imageDB: ImageDB, packageName: string) => void}
      */
-    response: response
+    response: require('./response')
 }
