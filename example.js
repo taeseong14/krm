@@ -19,7 +19,3 @@ krm.add('/네이버 [:q]', (msg, reply) => {
 
 
 const { response } = krm;
-
-
-// 테스트용 리스폰스
-response('room', '/안녕', 'sender', true, { reply: (text) => console.log(text) }, {}, 'packageName');
