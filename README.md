@@ -9,7 +9,7 @@
 ## 사용
 
 ### 다운로드, 설치
- - [Release v1.0.4](https://github.com/taeseong14/krm/releases/tag/1.0.4) 에서 krm.zip 다운로드
+ - [Release v1.0.6](https://github.com/taeseong14/krm/releases/tag/1.0.6) 에서 krm.zip 다운로드
  - /sdcard/msgbot/global_modules/에 압축 풀기
 
 ### 모듈 불러오기
@@ -90,6 +90,15 @@ krm.use(...handler: Handler);
    - text: 메시지 내용
    - params: [:param]으로 생성한 객체
    - 그외 room, sender, igc, imageDB, profileHash(imageDB.profileHash), packageName
+   - 파일 관련
+     - path foramt
+       - ./path, path -> /sdcard/msgbot/files/path
+       - /path -> /sdcard/msgbot/path
+       - ../path -> /sdcard/path
+     - read(path: string): (string | null) - 파일 읽음, 없으면 null
+     - write(path: string, text: (string | any)): void - 파일 저장
+     - readJson(path: string): (object | any[] | null) - json 읽기
+     - writeJson(path: string, object): void - json파일 저장. path가 .json으로 끝나지 않을 시 자동으로 붙임. 예시: [example.js](example.js) 29번 줄
 
  - reply
    - text(msg): replier.reply(msg);
