@@ -1,10 +1,10 @@
 /**
  * Add Route
  * @param {string} pattern 
- * @param {import('./').Handler} handler
+ * @param {...import('./').Handler}
  * @returns {void}
  */
-function add(pattern, handler) {
+function add(pattern/** , ...handler */) {
     if (typeof pattern !== 'string')
         throw new Error('add: pattern must be a string');
     let h = [];

@@ -66,7 +66,7 @@ let { response } = krm; // response 생성
 
 > add
 ```js
-krm.add(pattern: string, handler: Handler);
+krm.add(pattern: string, ...handler: Handler);
 ```
  - pattern: 명령어
    - RegExp(pattern)으로 불러오니 정규식관련 텍스트는 오류 가능성 있 (고칠예정)
@@ -76,7 +76,7 @@ krm.add(pattern: string, handler: Handler);
 
 > use
 ```js
-krm.use(handler: Handler);
+krm.use(...handler: Handler);
 ```
  - 항상 실행 (이미 break됐을 땐 제외)
    - express의 cookie-parser처럼 유동적으로 모듈을 넣거나 핸들러 프로퍼티를 원하는 대로 바꾸기 가능 (예제: [example.js](example.js) 8번 줄)

@@ -1,9 +1,9 @@
 /**
  * Add Route with Pattern '*'
- * @param {import('./').Handler} handler 
+ * @param {...import('./').Handler}
  * @returns {void}
  */
-function use(handler) {
+function use(/** ...handler */) {
     let h = [];
     for (let i = 0; i < arguments.length; i++) {
         let handler = arguments[i];

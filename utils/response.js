@@ -34,13 +34,28 @@ function response(room, msg, sender, igc, replier, imageDB, packageName) {
     }
 
     let handlerReply = {
+        /** @param {string} text */
         text: (text) => replier.reply(text),
+        /**
+         * @param {string} room 
+         * @param {string} text 
+         */
         textTo: (room, text) => replier.replyRoom(room, text),
+        /** @param  {...string} */
         randomText: function () {
             let text = arguments[Math.floor(Math.random() * arguments.length)];
             this.text(text);
         },
-        kakaolink: () => handlerReply.text('카카오링크는 아직 개발중입니다!'), // 만드는중
+        /**
+         * @param {number} templete_num 
+         * @param {object} [templete_args] 
+         * @param {string} [room]
+         * @returns {boolean}
+         */
+        kakaolink: (templete_num, templete_args, room) => {
+            handlerReply.text('카카오링크는 아직 개발중입니다!'); // 만드는중
+        },
+        /** @param {number} ms miliseconds */
         delay: (ms) => java.lang.Thread.sleep(ms),
         read: () => replier.markAsRead()
     }

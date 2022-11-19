@@ -1,10 +1,18 @@
 let Krm = require('./');
 let app = new Krm();
 
+// add
+
+app.add('/hi', (msg, reply) => {
+    reply.text('hello');
+});
 
 app.add('/안녕', (msg, reply) => {
     reply.randomText('안녕하세요!', msg.sender + '님 안녕하세요!');
 });
+
+
+// use
 
 app.use((msg, reply, next) => {
     msg.encodedText = encodeURIComponent(msg.text);
