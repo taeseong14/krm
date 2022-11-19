@@ -1,4 +1,4 @@
-const { add, response } = require('./utils');
+var { add, response } = require('./utils');
 
 function Krm() {
     this.handlers = [];
