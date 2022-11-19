@@ -1,4 +1,4 @@
-let Krm = require('./');
+let Krm = require('krm');
 let krm = new Krm();
 
 // add
@@ -44,7 +44,3 @@ krm.add('/관리자추가 [:profileHash]', checkAdmin, (msg, reply) => {
 
 
 let { response } = krm;
-
-
-// Debug
-module.exports = response;
