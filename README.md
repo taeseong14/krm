@@ -9,7 +9,7 @@
 ## 사용
 
 ### 다운로드, 설치
- - [v 1.0.4](https://github.com/taeseong14/krm/releases/tag/1.0.4) 에서 krm.zip 다운로드
+ - [Release v1.0.4](https://github.com/taeseong14/krm/releases/tag/1.0.4) 에서 krm.zip 다운로드
  - /sdcard/msgbot/global_modules/에 압축 풀기
 
 ### 모듈 불러오기
@@ -84,7 +84,7 @@ krm.use(...handler: Handler);
 
 #### Handler
 
-> Property
+> Params
 
  - ###### msg
    - text: 메시지 내용

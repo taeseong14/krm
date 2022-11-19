@@ -1,25 +1,25 @@
 let Krm = require('./');
-let app = new Krm();
+let krm = new Krm();
 
 // add
 
-app.add('/hi', (msg, reply) => {
+krm.add('/hi', (msg, reply) => {
     reply.text('hello');
 });
 
-app.add('/안녕', (msg, reply) => {
+krm.add('/안녕', (msg, reply) => {
     reply.randomText('안녕하세요!', msg.sender + '님 안녕하세요!');
 });
 
 
 // use
 
-app.use((msg, reply, next) => {
+krm.use((msg, reply, next) => {
     msg.encodedText = encodeURIComponent(msg.text);
     next();
 });
 
-app.add('/구글 [:q]', (msg, reply) => {
+krm.add('/구글 [:q]', (msg, reply) => {
     reply.text('https://google.com/search?q=' + msg.encodedText);
 });
 
@@ -33,17 +33,17 @@ function checkAdmin(msg, reply, next) {
     else reply.text('권한이 없습니다.');
 }
 
-app.add('/eval [:code]', checkAdmin, (msg, reply) => {
+krm.add('/eval [:code]', checkAdmin, (msg, reply) => {
     reply.text(eval(msg.params.code));
 });
 
-app.add('/관리자추가 [:profileHash]', checkAdmin, (msg, reply) => {
+krm.add('/관리자추가 [:profileHash]', checkAdmin, (msg, reply) => {
     admin.push(msg.params.profileHash);
     reply.text('추가되었습니다.');
 });
 
 
-let { response } = app;
+let { response } = krm;
 
 
 // Debug
