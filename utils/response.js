@@ -9,6 +9,8 @@
  * @property {string} profileHash
  */
 
+const { read, write, readJson, writeJson } = require('./files');
+
 /**
  * @param {string} room 
  * @param {string} msg 
@@ -30,7 +32,11 @@ function response(room, msg, sender, igc, replier, imageDB, packageName) {
         igc: igc,
         packageName: packageName,
         imageDB: imageDB,
-        profileHash: imageDB.profileHash
+        profileHash: imageDB.profileHash,
+        read: read,
+        write: write,
+        readJson: readJson,
+        writeJson: writeJson
     }
 
     let handlerReply = {

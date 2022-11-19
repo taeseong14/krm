@@ -1,4 +1,4 @@
-let Krm = require('krm');
+let Krm = require('./');
 let krm = new Krm();
 
 // add
@@ -21,6 +21,21 @@ krm.use((msg, reply, next) => {
 
 krm.add('/구글 [:q]', (msg, reply) => {
     reply.text('https://google.com/search?q=' + msg.encodedText);
+});
+
+
+// file
+
+krm.add('/메모 [:text]', (msg, reply) => {
+    let json = msg.readJson('memo') || {};
+    json[msg.sender] = msg.params.text;
+    msg.writeJson('memo', json);
+    reply.text('저장되었습니다.');
+});
+
+krm.add('/메모', (msg, reply) => {
+    let json = msg.readJson('memo') || {};
+    reply.text(json[msg.sender] || '저장된 메모가 없습니다.');
 });
 
 

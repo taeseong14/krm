@@ -8,6 +8,10 @@
  * @property {string} packageName
  * @property {ImageDB} imageDB
  * @property {number} profileHash
+ * @property {function} read
+ * @property {function} write
+ * @property {function} readJson
+ * @property {function} writeJson
  */
 /**
  * @typedef Reply

@@ -25,7 +25,11 @@
  - [X] .imageDB
  - [X] .profileHash
  - [X] .params
-
+ - [X] Files
+   - [X] .read
+   - [X] .write
+   - [X] .readJson
+   - [X] .writeJson
 #### reply
  - [X] text()
  - [X] textTo(room, )
