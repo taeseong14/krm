@@ -7,7 +7,7 @@
  * @property {boolean} igc
  * @property {string} packageName
  * @property {ImageDB} imageDB
- * @property {string} profileHash
+ * @property {number} profileHash
  */
 /**
  * @typedef Reply

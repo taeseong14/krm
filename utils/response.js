@@ -21,7 +21,7 @@
 function response(room, msg, sender, igc, replier, imageDB, packageName) {
 
     if (msg === '/krm info')
-        replier.reply('krm v1.0.4\nhttps://github.com/taeseong14/krm');
+        replier.reply('krm v1.0.5\nhttps://github.com/taeseong14/krm');
 
     let handlerMsg = {
         text: msg,
@@ -46,32 +46,34 @@ function response(room, msg, sender, igc, replier, imageDB, packageName) {
     }
 
 
-    for (let i = 0; i < this.handlers.length; i++) {
+    a: for (let i = 0; i < this.handlers.length; i++) {
         let h = this.handlers[i];
-        let { pattern, handler } = h;
 
-        let params = {};
-        pattern = pattern.replace(/\[\:([^ ]+)\]/g, (a, b) => {
-            return params[b] = '([^]+)';
-        });
-
-        if (pattern === '*' || msg.match(new RegExp(pattern))) {
-            let next = false;
-            if (pattern !== '*') {
-                let match = msg.match(new RegExp(pattern));
-                for (let i = 0; i < match.length - 1; i++) {
-                    let key = Object.keys(params)[i];
-                    params[key] = match[i + 1];
-                }
-            }
-
-            handlerMsg.params = params;
-
-            handler(handlerMsg, handlerReply, () => {
-                next = true;
+        for (let j = 0; j < h.length; j++) {
+            let h2 = h[j];
+            let { pattern, handler } = h2;
+            let params = {};
+            pattern = pattern.replace(/\[\:([^ ]+)\]/g, (a, b) => {
+                return params[b] = '([^]+)';
             });
 
-            if (!next) break;
+            if (pattern === '*' || msg.match(new RegExp(pattern))) {
+                let next = false;
+                if (pattern !== '*') {
+                    let match = msg.match(new RegExp(pattern));
+                    for (let k = 0; k < match.length - 1; k++) {
+                        let key = Object.keys(params)[k];
+                        params[key] = match[k + 1];
+                    }
+                }
+                handlerMsg.params = params;
+
+                handler(handlerMsg, handlerReply, () => {
+                    next = true;
+                });
+
+                if (!next) break a;
+            }
         }
     }
 }
