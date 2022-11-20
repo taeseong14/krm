@@ -7,14 +7,13 @@ function Krm() {
     this.use = use;
 
     this.File = file;
-
     this.Rand = rand;
-
     this.ify = ify;
 
     /** @type {import('./utils/response')} */
     this.response = response.bind(this);
 }
 
+if (globalThis.Log) Log.clear();
 
 module.exports = Krm;

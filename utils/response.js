@@ -64,7 +64,7 @@ function response(room, msg, sender, igc, replier, imageDB, packageName) {
         File.write('krm_info', Date.now());
     }
 
-    let handlerMsg = {
+    this.handlerMsg = {
         text: msg,
         room: room,
         sender: sender,
@@ -75,36 +75,36 @@ function response(room, msg, sender, igc, replier, imageDB, packageName) {
         now: Date.now(),
     }
 
-    let handlerReply = {
+    this.handlerReply = {
         /** @type {text} */
         text: function () {
             replier.reply(Array.from(arguments).join(' '));
-            return handlerReply;
+            return this.handlerReply;
         },
         /** @type {textTo} */
         textTo: (room, text) => {
             replier.replyRoom(room, text);
-            return handlerReply;
+            return this.handlerReply;
         },
         /** @type {randomText} */
         randomText: function () {
             let text = Rand.fromArray(arguments);
             this.text(text);
-            return handlerReply;
+            return this.handlerReply;
         },
         /** @type {kakaolink} */
         kakaolink: (templete_num, templete_args, room) => {
-            handlerReply.text('카카오링크는 아직 개발중입니다!'); // 만드는중
+            this.handlerReply.text('카카오링크는 아직 개발중입니다!'); // 만드는중
         },
         /** @type {delay} */
         delay: (ms) => {
             java.lang.Thread.sleep(ms);
-            return handlerReply;
+            return this.handlerReply;
         },
         /** @type {read} */
         read: () => {
             replier.markAsRead();
-            return handlerReply;
+            return this.handlerReply;
         }
     }
 
@@ -123,7 +123,7 @@ function response(room, msg, sender, igc, replier, imageDB, packageName) {
                 return params[b] = '?(.*)';
             });
 
-            if (pattern === '*' || msg.match(new RegExp(pattern))) {
+            if (pattern === '*' || msg.match(new RegExp('^' + pattern + '$'))) {
                 let next = false;
                 if (pattern !== '*') {
                     let match = msg.match(new RegExp(pattern));
@@ -132,9 +132,9 @@ function response(room, msg, sender, igc, replier, imageDB, packageName) {
                         params[key] = match[k + 1].trim();
                     }
                 }
-                handlerMsg.params = params;
+                this.handlerMsg.params = params;
 
-                handler(handlerMsg, handlerReply, () => {
+                handler(this.handlerMsg, this.handlerReply, () => {
                     next = true;
                 });
 
