@@ -5,11 +5,11 @@
  */
 function use(/** ...handler */) {
     if (arguments[1] === true) // import module
-        return h.push({
+        return this.handlers.push([{
             pattern: '*',
             handler: arguments[0],
             module: true
-        });
+        }]);
     let h = [];
     for (let i = 0; i < arguments.length; i++) {
         let handler = arguments[i];

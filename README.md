@@ -45,7 +45,7 @@ krm.add('/주기 [:person] [:money]', (msg, reply) => {
 
 ##### 카카오링크
 ```js
-krm.use(require('krm-kakaolink')(email, pw, apikey, url)); // 개발중인 모듈
+krm.use(require('krm-kakaolink')(email, pw, apikey, url));
 
 krm.add('/카링', (msg, reply) => {
     reply.kakaolink(num, {
