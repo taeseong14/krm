@@ -60,7 +60,7 @@ function response(room, msg, sender, igc, replier, imageDB, packageName) {
     if (msg === '/krm info') {
         let time = File.read('krm_info');
         if (time > Date.now() - 1000) return;
-        replier.reply('krm v1.0.8\nhttps://github.com/taeseong14/krm');
+        replier.reply('krm v1.0.9\nhttps://github.com/taeseong14/krm');
         File.write('krm_info', Date.now());
     }
 

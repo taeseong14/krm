@@ -1,6 +1,10 @@
 # Patch Note
 
 
+## v1.0.9
+ - [krm-kakaolink](https://github.com/taeseong14/krm-modules/blob/main/krm-kakaolink.js) 완성
+ - 호환성 맞춘
+
 ## v1.0.8
  - HandlerReply가 해당 객체를 리턴함
  - 필수가 아닌 param 추가([:param?])

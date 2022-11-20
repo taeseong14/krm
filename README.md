@@ -1,15 +1,16 @@
-# Krm - Kakaotalkbot Route Module [v1.0.8]
+# Krm - Kakaotalkbot Route Module [v1.0.9]
 
 카카오톡봇을 전반적으로 관리해주는 모듈. [패치노트](patchnote.md)
 
-예시: [examples](examples/)
+ - 예시: [examples](examples/)
+ - 모듈: [modules](https://github.com/taeseong14/krm-modules)
 
 ---
 
 ## 사용
 
 ### 다운로드, 설치
- - [Release v1.0.8](https://github.com/taeseong14/krm/releases/tag/1.0.8) 에서 krm.zip 다운로드
+ - [Release v1.0.9](https://github.com/taeseong14/krm/releases/tag/1.0.9) 에서 krm.zip 다운로드
  - /sdcard/msgbot/global_modules/에 압축 풀기
 
 ### 모듈 불러오기

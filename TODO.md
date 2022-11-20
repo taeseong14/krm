@@ -36,7 +36,7 @@
  - [X] text()
  - [X] textTo(room, )
  - [X] randomText(,,)
- - [ ] kakaolink()
+ - [X] kakaolink()
  - [X] delay(ms)
  - [X] read() // markAsRead
 #### next

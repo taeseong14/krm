@@ -6,3 +6,4 @@
 ### [multiple_listeners](3_multiple_listener.js)
 ### [file](4_file.js): File - readJson & writeJson
 ### [rand](5_rand.js): Rand - fromArr
+### [kakaolink](6_kakaolink.js): reply.kakaolink
