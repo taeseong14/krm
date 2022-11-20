@@ -1,4 +1,4 @@
-let { add, use, response, file, rand } = require('./utils');
+let { add, use, response, file, rand, ify } = require('./utils');
 
 function Krm() {
     this.handlers = [];
@@ -12,6 +12,8 @@ function Krm() {
     this.File = file;
 
     this.Rand = rand;
+
+    this.ify = ify;
 }
 
 

@@ -1,6 +1,10 @@
 # Patch Note
 
 
+## v1.0.8
+ - HandlerReply가 해당 객체를 리턴함
+ - 필수가 아닌 param 추가([:param?])
+
 ## v1.0.7
  - 파일 관련 수정, 랜덤 추가
 

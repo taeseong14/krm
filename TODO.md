@@ -1,13 +1,16 @@
 # TODO
 
 
+## krm
+ - [X] File
+ - [X] Rand
+ - [X] ify
+
 ## routes
 
  - [X] add 구현
  - [X] use 구현
  - [X] 한 루트에 리스너 여러개?
- - [X] File
- - [X] Rand
 
 
 ## response
@@ -27,6 +30,8 @@
  - [X] .imageDB
  - [X] .profileHash
  - [X] .params
+   - [X] [:param]
+   - [X] [:param?]
 #### reply
  - [X] text()
  - [X] textTo(room, )
@@ -34,6 +39,5 @@
  - [ ] kakaolink()
  - [X] delay(ms)
  - [X] read() // markAsRead
-
 #### next
  - [X] next 구현

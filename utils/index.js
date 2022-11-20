@@ -8,15 +8,16 @@
  * @property {string} packageName
  * @property {ImageDB} imageDB
  * @property {number} profileHash
+ * @property {number} now
  */
 /**
  * @typedef Reply
- * @property {function} text
- * @property {function} textTo
- * @property {function} randomText
- * @property {function} kakaolink
- * @property {function} delay
- * @property {function} read
+ * @property {import('./response').text} text
+ * @property {import('./response').textTo} textTo
+ * @property {import('./response').randomText} randomText
+ * @property {import('./response').kakaolink} kakaolink
+ * @property {import('./response').delay} delay
+ * @property {import('./response').read} read
  */
 
 /**
@@ -37,4 +38,6 @@ module.exports = {
     file: require('./file'),
 
     rand: require('./rand'),
+
+    ify: require('./ify')
 }

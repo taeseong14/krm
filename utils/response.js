@@ -9,6 +9,41 @@
  * @property {string} profileHash
  */
 
+
+/**
+ * @callback text
+ * @param {...string} text
+ * @returns {import('./').Reply}
+ */
+/**
+ * @callback textTo
+ * @param {string} room 
+ * @param {string} text 
+ * @returns {import('./').Reply}
+ */
+/**
+ * @callback randomText
+ * @param  {...string}
+ * @returns {import('./').Reply}
+ */
+/**
+ * @callback kakaolink
+ * @param {number} templete_num
+ * @param {object} [templete_args]
+ * @param {string} [room]
+ * @returns {boolean}
+ */
+/**
+ * @callback delay
+ * @param {number} ms miliseconds
+ * @returns {import('./').Reply}
+ */
+/**
+ * @callback read
+ * @returns {import('./').Reply}
+ */
+
+
 /**
  * @param {string} room 
  * @param {string} msg 
@@ -21,7 +56,7 @@
 function response(room, msg, sender, igc, replier, imageDB, packageName) {
 
     if (msg === '/krm info')
-        replier.reply('krm v1.0.7\nhttps://github.com/taeseong14/krm');
+        replier.reply('krm v1.0.8\nhttps://github.com/taeseong14/krm');
 
     let handlerMsg = {
         text: msg,
@@ -30,34 +65,41 @@ function response(room, msg, sender, igc, replier, imageDB, packageName) {
         igc: igc,
         packageName: packageName,
         imageDB: imageDB,
-        profileHash: imageDB.profileHash
+        profileHash: imageDB.profileHash,
+        now: Date.now(),
     }
 
     let handlerReply = {
-        /** @param {string} text */
-        text: (text) => replier.reply(text),
-        /**
-         * @param {string} room 
-         * @param {string} text 
-         */
-        textTo: (room, text) => replier.replyRoom(room, text),
-        /** @param  {...string} */
-        randomText: function () {
-            let text = arguments[Math.floor(Math.random() * arguments.length)];
-            this.text(text);
+        /** @type {text} */
+        text: function () {
+            replier.reply(Array.from(arguments).join(' '));
+            return handlerReply;
         },
-        /**
-         * @param {number} templete_num 
-         * @param {object} [templete_args] 
-         * @param {string} [room]
-         * @returns {boolean}
-         */
+        /** @type {textTo} */
+        textTo: (room, text) => {
+            replier.replyRoom(room, text);
+            return handlerReply;
+        },
+        /** @type {randomText} */
+        randomText: function () {
+            let text = this.Rand.fromArray(arguments);
+            this.text(text);
+            return handlerReply;
+        },
+        /** @type {kakaolink} */
         kakaolink: (templete_num, templete_args, room) => {
             handlerReply.text('카카오링크는 아직 개발중입니다!'); // 만드는중
         },
-        /** @param {number} ms miliseconds */
-        delay: (ms) => java.lang.Thread.sleep(ms),
-        read: () => replier.markAsRead()
+        /** @type {delay} */
+        delay: (ms) => {
+            java.lang.Thread.sleep(ms);
+            return handlerReply;
+        },
+        /** @type {read} */
+        read: () => {
+            replier.markAsRead();
+            return handlerReply;
+        }
     }
 
 
@@ -68,9 +110,13 @@ function response(room, msg, sender, igc, replier, imageDB, packageName) {
             let h2 = h[j];
             let { pattern, handler } = h2;
             let params = {};
-            pattern = pattern.replace(/\[\:([^ ]+)\]/g, (a, b) => {
-                return params[b] = '([^]+)';
+            pattern = pattern.replace(/\[\:([^ ?]+)\]/g, (a, b) => {
+                return params[b] = '((?:(?:[^ ]+ *)(?![^ ]+$))+)';
             });
+            pattern = pattern.replace(/\[\:([^ ?]+)\?\]/g, (a, b) => {
+                return params[b] = '?(.*)';
+            });
+            console.log(pattern);
 
             if (pattern === '*' || msg.match(new RegExp(pattern))) {
                 let next = false;
@@ -78,7 +124,7 @@ function response(room, msg, sender, igc, replier, imageDB, packageName) {
                     let match = msg.match(new RegExp(pattern));
                     for (let k = 0; k < match.length - 1; k++) {
                         let key = Object.keys(params)[k];
-                        params[key] = match[k + 1];
+                        params[key] = match[k + 1].trim();
                     }
                 }
                 handlerMsg.params = params;

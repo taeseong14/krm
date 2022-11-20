@@ -1,4 +1,4 @@
-# Krm - Kakaotalkbot Route Module [1.0.7]
+# Krm - Kakaotalkbot Route Module [v1.0.8]
 
 카카오톡봇을 전반적으로 관리해주는 모듈. [패치노트](patchnote.md)
 
@@ -9,7 +9,7 @@
 ## 사용
 
 ### 다운로드, 설치
- - [Release v1.0.7](https://github.com/taeseong14/krm/releases/tag/1.0.7) 에서 krm.zip 다운로드
+ - [Release v1.0.8](https://github.com/taeseong14/krm/releases/tag/1.0.8) 에서 krm.zip 다운로드
  - /sdcard/msgbot/global_modules/에 압축 풀기
 
 ### 모듈 불러오기
@@ -151,8 +151,10 @@ krm.Rand.fromArray([1, 2, 3]);
    - text: 메시지 내용
    - params: [:param]으로 생성한 객체
    - 그외 room, sender, igc, imageDB, profileHash(imageDB.profileHash), packageName
+   - now: timestamp (=Date.now())
 
  - reply
+   - 메소드들은 reply객체를 리턴함 -> .text().text() 등등 가능
    - text(msg): replier.reply(msg);
    - replyTo(room, msg): replier.reply(room, msg);
    - randomText(t1, t2, ..): 랜덤으로 대답
