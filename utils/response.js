@@ -93,8 +93,8 @@ function response(room, msg, sender, igc, replier, imageDB, packageName) {
             return this.handlerReply;
         },
         /** @type {kakaolink} */
-        kakaolink: (templete_num, templete_args, room) => {
-            this.handlerReply.text('카카오링크는 아직 개발중입니다!'); // 만드는중
+        kakaolink: (templete_num, templete_args, room) => { // 모듈 넣기 전
+            this.handlerReply.text('github.com/taeseong14/krm-modules의 krm-kakaolink 모듈을 받아주세요.');
         },
         /** @type {delay} */
         delay: (ms) => {
@@ -108,13 +108,18 @@ function response(room, msg, sender, igc, replier, imageDB, packageName) {
         }
     }
 
+    this.handlers.forEach(handler => { // check modules
+        if (handler[0].module)
+            handler[0].handler(this.handlerMsg, this.handlerReply, () => { });
+    });
 
     a: for (let i = 0; i < this.handlers.length; i++) {
         let h = this.handlers[i];
 
         for (let j = 0; j < h.length; j++) {
             let h2 = h[j];
-            let { pattern, handler } = h2;
+            let { pattern, handler, module } = h2;
+            if (module) break a;
             let params = {};
             pattern = pattern.replace(/\[\:([^ ?]+)\]/g, (a, b) => {
                 return params[b] = '((?:(?:[^ ]+ *)(?![^ ]+$))+)';
