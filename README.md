@@ -113,7 +113,7 @@ krm.File.readJson(path);
 ```js
 krm.File.writeJson(path, object);
 ```
- - json파일 저장. path가 .json으로 끝나지 않을 시 자동으로 붙임. 예시: [example_3](examples/3_file.js)
+ - json파일 저장. path가 .json으로 끝나지 않을 시 자동으로 붙임. 예시: [example_4](examples/4_file.js)
 
 
 #### Rand
