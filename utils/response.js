@@ -21,7 +21,7 @@
 function response(room, msg, sender, igc, replier, imageDB, packageName) {
 
     if (msg === '/krm info')
-        replier.reply('krm v1.0.6\nhttps://github.com/taeseong14/krm');
+        replier.reply('krm v1.0.7\nhttps://github.com/taeseong14/krm');
 
     let handlerMsg = {
         text: msg,

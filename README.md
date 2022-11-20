@@ -9,7 +9,7 @@
 ## 사용
 
 ### 다운로드, 설치
- - [Release v1.0.6](https://github.com/taeseong14/krm/releases/tag/1.0.6) 에서 krm.zip 다운로드
+ - [Release v1.0.7](https://github.com/taeseong14/krm/releases/tag/1.0.7) 에서 krm.zip 다운로드
  - /sdcard/msgbot/global_modules/에 압축 풀기
 
 ### 모듈 불러오기
@@ -113,7 +113,7 @@ krm.File.readJson(path);
 ```js
 krm.File.writeJson(path, object);
 ```
- - json파일 저장. path가 .json으로 끝나지 않을 시 자동으로 붙임. 예시: [example_3](examples/3_file.js) 29번 줄
+ - json파일 저장. path가 .json으로 끝나지 않을 시 자동으로 붙임. 예시: [example_3](examples/3_file.js)
 
 
 #### Rand
