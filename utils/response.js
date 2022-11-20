@@ -116,7 +116,6 @@ function response(room, msg, sender, igc, replier, imageDB, packageName) {
             pattern = pattern.replace(/\[\:([^ ?]+)\?\]/g, (a, b) => {
                 return params[b] = '?(.*)';
             });
-            console.log(pattern);
 
             if (pattern === '*' || msg.match(new RegExp(pattern))) {
                 let next = false;
