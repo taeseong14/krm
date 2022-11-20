@@ -9,8 +9,6 @@
  * @property {string} profileHash
  */
 
-const { read, write, readJson, writeJson } = require('./files');
-
 /**
  * @param {string} room 
  * @param {string} msg 
@@ -23,7 +21,7 @@ const { read, write, readJson, writeJson } = require('./files');
 function response(room, msg, sender, igc, replier, imageDB, packageName) {
 
     if (msg === '/krm info')
-        replier.reply('krm v1.0.5\nhttps://github.com/taeseong14/krm');
+        replier.reply('krm v1.0.6\nhttps://github.com/taeseong14/krm');
 
     let handlerMsg = {
         text: msg,
@@ -32,11 +30,7 @@ function response(room, msg, sender, igc, replier, imageDB, packageName) {
         igc: igc,
         packageName: packageName,
         imageDB: imageDB,
-        profileHash: imageDB.profileHash,
-        read: read,
-        write: write,
-        readJson: readJson,
-        writeJson: writeJson
+        profileHash: imageDB.profileHash
     }
 
     let handlerReply = {

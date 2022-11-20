@@ -1,8 +1,8 @@
-# Krm - Kakaotalkbot Route Module [1.0.6]
+# Krm - Kakaotalkbot Route Module [1.0.7]
 
 카카오톡봇을 전반적으로 관리해주는 모듈. [패치노트](patchnote.md)
 
-예시: [example.js](example.js)
+예시: [examples](examples/)
 
 ---
 
@@ -44,6 +44,8 @@ krm.add('/주기 [:person] [:money]', (msg, reply) => {
 
 ##### 카카오링크[개발중]
 ```js
+krm.use(require('krm-kakaolink')); // 개발중인 모듈
+
 krm.add('/카링', (msg, reply) => {
     reply.kakaolink(num, {
         title: '카링 테스트',
@@ -79,26 +81,76 @@ krm.add(pattern: string, ...handler: Handler);
 krm.use(...handler: Handler);
 ```
  - 항상 실행 (이미 break됐을 땐 제외)
-   - express의 cookie-parser처럼 유동적으로 모듈을 넣거나 핸들러 프로퍼티를 원하는 대로 바꾸기 가능 (예제: [example.js](example.js) 8번 줄)
+   - express의 cookie-parser처럼 유동적으로 모듈을 넣거나 핸들러 프로퍼티를 원하는 대로 바꾸기 가능 (예제: [example_2](examples/2_use.js))
  - handler: [핸들러](#handler)
+
+#### File
+
+ - path foramt
+   - ./path, path -> /sdcard/msgbot/files/path
+   - /path -> /sdcard/msgbot/path
+   - ../path -> /sdcard/path
+
+> read(path: string): (string | null)
+```js
+krm.File.read(path);
+```
+ - 파일 읽음, 없으면 null
+
+> write(path: string, text: (string | any)): void
+```js
+krm.File.write(path, text);
+```
+ - 파일 저장
+
+> readJson(path: string): (object | any[] | null)
+```js
+krm.File.readJson(path);
+```
+ - json 읽기
+
+> writeJson(path: string, obj: object): void
+```js
+krm.File.writeJson(path, object);
+```
+ - json파일 저장. path가 .json으로 끝나지 않을 시 자동으로 붙임. 예시: [example_3](examples/3_file.js) 29번 줄
+
+
+#### Rand
+
+> range(n1: number, n2: number): number
+> range(n1: number): number
+```js
+krm.Rand.range(1, 10);
+krm.Rand.range(10);
+```
+ - n1 ~ n2 range
+ - 0 ~ n1 range
+
+> randInt(n1: number, n2: number): number
+> randInt(n1: number): number
+```js
+krm.Rand.randInt(1, 5);
+krm.Rand.randInt(5);
+```
+ - n1 ~ n2 int
+ - 0 ~ n1 int
+
+> fromArray(arr: any[]): any
+```js
+krm.Rand.fromArray([1, 2, 3]);
+```
+ - Random element from an Array
+
 
 #### Handler
 
 > Params
 
- - ###### msg
+ - ##### msg
    - text: 메시지 내용
    - params: [:param]으로 생성한 객체
    - 그외 room, sender, igc, imageDB, profileHash(imageDB.profileHash), packageName
-   - 파일 관련
-     - path foramt
-       - ./path, path -> /sdcard/msgbot/files/path
-       - /path -> /sdcard/msgbot/path
-       - ../path -> /sdcard/path
-     - read(path: string): (string | null) - 파일 읽음, 없으면 null
-     - write(path: string, text: (string | any)): void - 파일 저장
-     - readJson(path: string): (object | any[] | null) - json 읽기
-     - writeJson(path: string, object): void - json파일 저장. path가 .json으로 끝나지 않을 시 자동으로 붙임. 예시: [example.js](example.js) 29번 줄
 
  - reply
    - text(msg): replier.reply(msg);

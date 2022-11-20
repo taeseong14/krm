@@ -8,10 +8,6 @@
  * @property {string} packageName
  * @property {ImageDB} imageDB
  * @property {number} profileHash
- * @property {function} read
- * @property {function} write
- * @property {function} readJson
- * @property {function} writeJson
  */
 /**
  * @typedef Reply
@@ -36,5 +32,9 @@ module.exports = {
 
     use: require('./use'),
 
-    response: require('./response')
+    response: require('./response'),
+
+    file: require('./file'),
+
+    rand: require('./rand'),
 }
