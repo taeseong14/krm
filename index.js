@@ -14,6 +14,6 @@ function Krm() {
     this.response = response.bind(this);
 }
 
-if (globalThis.Log) Log.clear();
+if (this.Log) Log.clear();
 
 module.exports = Krm;
