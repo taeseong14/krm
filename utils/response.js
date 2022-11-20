@@ -55,8 +55,14 @@
  */
 function response(room, msg, sender, igc, replier, imageDB, packageName) {
 
-    if (msg === '/krm info')
+    let { Rand, File } = this;
+
+    if (msg === '/krm info') {
+        let time = File.read('krm_info');
+        if (time > Date.now() - 1000) return;
         replier.reply('krm v1.0.8\nhttps://github.com/taeseong14/krm');
+        File.write('krm_info', Date.now());
+    }
 
     let handlerMsg = {
         text: msg,
@@ -82,7 +88,7 @@ function response(room, msg, sender, igc, replier, imageDB, packageName) {
         },
         /** @type {randomText} */
         randomText: function () {
-            let text = this.Rand.fromArray(arguments);
+            let text = Rand.fromArray(arguments);
             this.text(text);
             return handlerReply;
         },
