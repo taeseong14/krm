@@ -1,13 +1,16 @@
 (function () {
     /**
      * Add Route
-     * @param {string} pattern 
+     * @param {string | RegExp | string[] | RegExp[]} pattern 
      * @param {...import('./').Handler} handler
      * @returns {void}
      */
     function add(pattern, /** ... */handler) {
-        if (typeof pattern !== 'string')
-            throw new Error('add: pattern must be a string');
+        if (!Array.isArray(pattern)) pattern = [pattern];
+        pattern.forEach(p => {
+            if (typeof p !== 'string' && !(p instanceof RegExp))
+                throw new Error('add: pattern must be a string or RegExp');
+        });
         let h = [];
         for (let i = 1; i < arguments.length; i++) {
             let handler = arguments[i];

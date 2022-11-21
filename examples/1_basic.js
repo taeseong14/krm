@@ -5,6 +5,14 @@ krm.add('/ping', (msg, reply) => { // 일반 대답
     reply.text('pong');
 });
 
+krm.add(/^\/ping$/, (msg, reply) => { // 정규표현식 대답
+    reply.text('pong');
+});
+
+krm.add(['hi', 'hello'], (msg, reply) => { // 같은 라우트
+    reply.text('hi');
+});
+
 krm.add('/hi', (msg, reply) => { // 랜덤 대답
     reply.randomText('hello', 'hi', msg.sender + '님 안녕하세요');
 });

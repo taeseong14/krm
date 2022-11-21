@@ -15,9 +15,9 @@
         for (let i = 0; i < arguments.length; i++) {
             let handler = arguments[i];
             if (handler !== undefined && handler.constructor.name === 'Promise')
-                return handler.then(e => this.use(e, true));
+                return handler.then(e => this.use(e, true)); // import module
             if (typeof handler !== 'function')
-                throw new Error('use: handler must be a function');
+                throw new Error('use: handler must be a function or Promise');
             h.push({
                 pattern: '*',
                 handler: handler

@@ -1,4 +1,4 @@
-# Krm - Kakaotalkbot Route Module [v1.1.0]
+# Krm - Kakaotalkbot Route Module [v1.1.1]
 
 카카오톡봇을 전반적으로 관리해주는 모듈. [패치노트](patchnote.md)
 
@@ -66,10 +66,16 @@ let { response } = krm; // response 생성
 
 ### krm
 
-> add(pattern: string, ...handler: Handler)
+> add(pattern: (string | RegExp | string[] | RegExp[]), ...handler: Handler)
 ```js
 krm.add('/hi', (msg, reply) => {
     reply.text('hi!');
+});
+krm.add(/^\/hi$/, (msg, reply) => {
+    reply.text('hi!!');
+});
+krm.add(['hi', 'hello'], (msg, reply) => {
+    reply.text(msg.text);
 });
 ```
  - pattern: 명령어
@@ -155,17 +161,17 @@ krm.Rand.fromArray([1, 2, 3]);
  - Random element from an Array
 
 
-#### Date
+#### date
 
 > format(date: (number | Date), format?: string): string
 ```js
 // 2022/01/05 08:26:01 기준
 krm.add('/시간', (msg, reply, next) => {
-    reply.text(krm.Date.format(msg.now, '년-월-일 시:분:초'));
+    reply.text(krm.date.format(msg.now, '년-월-일 시:분:초'));
     // 2022-1-5 8:26:1
     next(); // 응답이 복사가 된다고?
 }, (msg, reply) => {
-    reply.text(krm.Date.format(msg.now, '년년-월월-일일 시시:분분:초초'));
+    reply.text(krm.date.format(msg.now, '년년-월월-일일 시시:분분:초초'));
     // 22-01-05 08:26:01
 });
 ```

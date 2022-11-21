@@ -9,8 +9,8 @@
         if (typeof date === 'number') date = new Date(date);
         format = format || '년-월-일 시:분:초';
         format = format.replace(/(년|Y)+/gi, e => {
-            if (e.length === 1) return date.getFullYear();
-            return date.getFullYear().toString().substr(2);
+            if (e.length === 2) return date.getFullYear().toString().substr(2);
+            return date.getFullYear();
         });
         format = format.replace(/(월|M)+/g, e => {
             if (e.length === 1) return date.getMonth() + 1;

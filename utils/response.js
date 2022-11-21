@@ -56,7 +56,7 @@
      */
     function response(room, msg, sender, igc, replier, imageDB, packageName) {
 
-        let { Rand, File, Date } = this;
+        let { Rand, File, date } = this;
 
         if (msg === '/krm info') {
             let time = File.read('krm_info');
@@ -121,33 +121,49 @@
                 let h2 = h[j];
                 let { pattern, handler, module } = h2;
                 if (module) continue;
-                let params = {};
-                pattern = pattern.replace(/\[\:([^ ?]+)\]/g, (a, b) => {
-                    return params[b] = '((?:(?:[^ ]+ *)(?![^ ]+$))+)';
-                });
-                pattern = pattern.replace(/\[\:([^ ?]+)\?\]/g, (a, b) => {
-                    return params[b] = '?(.*)';
-                });
 
-                if (pattern === '*' || msg.match(new RegExp('^' + pattern + '$'))) {
-                    let next = false;
-                    if (pattern !== '*') {
-                        let match = msg.match(new RegExp(pattern));
-                        for (let k = 0; k < match.length - 1; k++) {
-                            let key = Object.keys(params)[k];
-                            params[key] = match[k + 1].trim();
+                for (let l = 0; l < pattern.length; l++) {
+                    let p = pattern[l];
+                    if (p instanceof RegExp) {
+                        if (msg.match(p)) {
+                            let next = false;
+                            handler(this.handlerMsg, this.handlerReply, () => {
+                                next = true;
+                            });
+                            if (!next) break a;
+                            break;
+                        }
+                    } else { // string
+                        let params = {};
+                        p = p.replace(/\[\:([^ ?]+)\]/g, (a, b) => {
+                            return params[b] = '((?:(?:[^ ]+ *)(?![^ ]+$))+)';
+                        });
+                        p = p.replace(/\[\:([^ ?]+)\?\]/g, (a, b) => {
+                            return params[b] = '?(.*)';
+                        });
+
+                        if (p === '*' || msg.match(new RegExp('^' + p + '$'))) {
+                            let next = false;
+                            if (p !== '*') {
+                                let match = msg.match(new RegExp(p));
+                                for (let k = 0; k < match.length - 1; k++) {
+                                    let key = Object.keys(params)[k];
+                                    params[key] = match[k + 1].trim();
+                                }
+                            }
+                            this.handlerMsg.params = params;
+
+                            handler(this.handlerMsg, this.handlerReply, () => {
+                                next = true;
+                            });
+
+                            if (!next) break a;
+                            break;
                         }
                     }
-                    this.handlerMsg.params = params;
-
-                    handler(this.handlerMsg, this.handlerReply, () => {
-                        next = true;
-                    });
-
-                    if (!next) break a;
-                }
+                } // for - c
             }
-        }
+        } // for - a
     }
 
     module.exports = response;

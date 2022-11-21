@@ -1,6 +1,11 @@
 # Patch Note
 
 
+## v1.1.1
+ - 스코프이슈 - 익명함수로 돌림
+ - Date 수정
+ - add - pattern 허용 형식 추가: string | RegExp | string[] | RegExp[]
+
 ## v1.1.0
  - Date 추가
 
