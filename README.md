@@ -75,7 +75,9 @@ krm.add('/hi', (msg, reply) => {
  - pattern: 명령어
    - RegExp(pattern)으로 불러오니 정규식관련 텍스트는 오류 가능성 있 (고칠예정)
    - Params
-     - [:param] 식으로 적으면 '[msg](#msg).params.param' 으로 꺼낼 수 있음
+     - [:param] -> '[msg](#msg).params.param' 으로 꺼낼 수 있음
+     - [:param?] - 필수가 아닌. 
+       - `/샌즈 [:one] [:two?]` 시 '/샌즈 1'에도 반응
  - handler: [핸들러](#handler)
 
 > use(...handler: Handler)

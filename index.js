@@ -8,7 +8,7 @@ function Krm() {
 
     this.File = file;
     this.Rand = rand;
-    this.Date = date;
+    this.date = date;
     this.ify = ify;
 
     /** @type {import('./utils/response')} */
