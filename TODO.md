@@ -4,6 +4,7 @@
 ## krm
  - [X] File
  - [X] Rand
+ - [X] Date
  - [X] ify
 
 ## routes

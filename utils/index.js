@@ -39,5 +39,7 @@ module.exports = {
 
     rand: require('./rand'),
 
+    date: require('./date'),
+
     ify: require('./ify')
 }

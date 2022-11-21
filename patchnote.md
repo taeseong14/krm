@@ -1,6 +1,9 @@
 # Patch Note
 
 
+## v1.1.0
+ - Date 추가
+
 ## v1.0.9
  - [krm-kakaolink](https://github.com/taeseong14/krm-modules/blob/main/krm-kakaolink.js) 완성
  - 호환성 맞춘
@@ -10,10 +13,10 @@
  - 필수가 아닌 param 추가([:param?])
 
 ## v1.0.7
- - 파일 관련 수정, 랜덤 추가
+ - File 수정, Rand 추가
 
 ## v1.0.6
- - 파일 관련 추가
+ - File 추가
 
 ### v1.0.5
  - 루트 하나에 리스너 여러개달기 구현 (...args 외안대;;)

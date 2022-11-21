@@ -1,4 +1,4 @@
-# Krm - Kakaotalkbot Route Module [v1.0.9]
+# Krm - Kakaotalkbot Route Module [v1.1.0]
 
 카카오톡봇을 전반적으로 관리해주는 모듈. [패치노트](patchnote.md)
 
@@ -10,7 +10,7 @@
 ## 사용
 
 ### 다운로드, 설치
- - [Release v1.0.9](https://github.com/taeseong14/krm/releases/tag/1.0.9) 에서 krm.zip 다운로드
+ - [Release v1.1.0](https://github.com/taeseong14/krm/releases/tag/1.1.0) 에서 krm.zip 다운로드
  - /sdcard/msgbot/global_modules/에 압축 풀기
 
 ### 모듈 불러오기
@@ -148,6 +148,30 @@ krm.Rand.randInt(1, 5);
 krm.Rand.fromArray([1, 2, 3]);
 ```
  - Random element from an Array
+
+
+#### Date
+
+> format(date: (number | Date), format?: string): string
+```js
+// 2022/01/05 08:26:01 기준
+krm.add('/시간', (msg, reply, next) => {
+    reply.text(krm.Date.format(msg.now, '년-월-일 시:분:초'));
+    // 2022-1-5 8:26:1
+    next(); // 응답이 복사가 된다고?
+}, (msg, reply) => {
+    reply.text(krm.Date.format(msg.now, '년년-월월-일일 시시:분분:초초'));
+    // 22-01-05 08:26:01
+});
+```
+ - format
+   - (yyyy | y) - 2022, yy - 22 (Y/y)
+   - MM - 01, m - 1
+   - dd - 01, d - 1 (D/d)
+   - hh - 01, h - 1 (H/h)
+   - mm - 01, m - 1
+   - ss - 01, s - 1 (S/s)
+   - 오전오후는 귀찮아서 안넣음 (java.text.Simple어쩌구 쓰세여)
 
 
 #### Handler

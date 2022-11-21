@@ -55,12 +55,12 @@
  */
 function response(room, msg, sender, igc, replier, imageDB, packageName) {
 
-    let { Rand, File } = this;
+    let { Rand, File, Date } = this;
 
     if (msg === '/krm info') {
         let time = File.read('krm_info');
         if (time > Date.now() - 1000) return;
-        replier.reply('krm v1.0.9\nhttps://github.com/taeseong14/krm');
+        replier.reply('krm v1.1.0\nhttps://github.com/taeseong14/krm');
         File.write('krm_info', Date.now());
     }
 
