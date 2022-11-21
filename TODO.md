@@ -20,10 +20,10 @@
  - [X] response 만들기
  - [X] params 구현
  - [ ] pattern 정규식 막기
- - [ ] add
-   - [ ] add RegExp
+ - add
+   - [X] add RegExp
      - [ ] regex 그루핑 param
-   - [ ] add array
+   - [X] add array
 
 
 ## Handler

@@ -14,6 +14,9 @@
 
         /** @type {import('./utils/response')} */
         this.response = response.bind(this);
+
+        this.prefix = '';
+        this.setPrefix = p => this.prefix = p;
     }
 
     if (this.Log) Log.clear();

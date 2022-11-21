@@ -56,7 +56,7 @@
      */
     function response(room, msg, sender, igc, replier, imageDB, packageName) {
 
-        let { Rand, File, date } = this;
+        let { Rand, File, date, prefix } = this;
 
         if (msg === '/krm info') {
             let time = File.read('krm_info');
@@ -142,7 +142,7 @@
                             return params[b] = '?(.*)';
                         });
 
-                        if (p === '*' || msg.match(new RegExp('^' + p + '$'))) {
+                        if (p === '*' || msg.match(new RegExp('^' + (prefix.match(/[a-z]/i) ? prefix : '\\' + prefix) + p + '$'))) {
                             let next = false;
                             if (p !== '*') {
                                 let match = msg.match(new RegExp(p));

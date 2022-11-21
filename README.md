@@ -79,7 +79,10 @@ krm.add(['hi', 'hello'], (msg, reply) => {
 });
 ```
  - pattern: 명령어
-   - RegExp(pattern)으로 불러오니 정규식관련 텍스트는 오류 가능성 있 (고칠예정)
+   - 형식
+     - string: RegExp(pattern)으로 불러오니 정규식관련 텍스트는 오류 가능성 있 (고칠예정)
+     - RegExp: 그대로
+     - arr: string/RegExp배열. 그중 하나라도 만족(포함?)하면 실행
    - Params
      - [:param] -> '[msg](#msg).params.param' 으로 꺼낼 수 있음
      - [:param?] - 필수가 아닌. 
@@ -214,3 +217,17 @@ krm.use((msg, reply, next) => {
     next(); // 다음 리스너 살펴봄
 });
 ```
+
+
+#### Prefix 기능
+
+> krm.setPrefix(prefix: string)
+```js
+krm.setPrefix('/');
+
+krm.add('ping', (msg, reply) => {
+    reply.text('pong!');
+});
+```
+ - 자동으로 앞에 해당 prefix를 넣는
+ - 중복으로 넣지 않게 조심하심시오
