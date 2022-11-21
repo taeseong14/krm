@@ -119,7 +119,7 @@ function response(room, msg, sender, igc, replier, imageDB, packageName) {
         for (let j = 0; j < h.length; j++) {
             let h2 = h[j];
             let { pattern, handler, module } = h2;
-            if (module) break a;
+            if (module) continue;
             let params = {};
             pattern = pattern.replace(/\[\:([^ ?]+)\]/g, (a, b) => {
                 return params[b] = '((?:(?:[^ ]+ *)(?![^ ]+$))+)';

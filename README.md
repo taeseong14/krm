@@ -67,19 +67,26 @@ let { response } = krm; // response 생성
 
 ### krm
 
-> add
+> add(pattern: string, ...handler: Handler)
 ```js
-krm.add(pattern: string, ...handler: Handler);
+krm.add('/hi', (msg, reply) => {
+    reply.text('hi!');
+});
 ```
  - pattern: 명령어
    - RegExp(pattern)으로 불러오니 정규식관련 텍스트는 오류 가능성 있 (고칠예정)
    - Params
-     - [:param] 식으로 적으면 `[Msg](#msg).params.param`으로 꺼낼 수 있음
+     - [:param] 식으로 적으면 '[msg](#msg).params.param' 으로 꺼낼 수 있음
  - handler: [핸들러](#handler)
 
-> use
+> use(...handler: Handler)
+> use(krm-modules)
 ```js
-krm.use(...handler: Handler);
+krm.use((msg, reply, next) => {
+    this.chatCount++;
+    next();
+});
+krm.use(require('krm-kakaolink'));
 ```
  - 항상 실행 (이미 break됐을 땐 제외)
    - express의 cookie-parser처럼 유동적으로 모듈을 넣거나 핸들러 프로퍼티를 원하는 대로 바꾸기 가능 (예제: [example_2](examples/2_use.js))
@@ -119,23 +126,23 @@ krm.File.writeJson(path, object);
 
 #### Rand
 
-> range(n1: number, n2: number): number
 > range(n1: number): number
+> range(n1: number, n2: number): number
 ```js
-krm.Rand.range(1, 10);
 krm.Rand.range(10);
+krm.Rand.range(1, 10);
 ```
- - n1 ~ n2 range
  - 0 ~ n1 range
+ - n1 ~ n2 range
 
-> randInt(n1: number, n2: number): number
 > randInt(n1: number): number
+> randInt(n1: number, n2: number): number
 ```js
-krm.Rand.randInt(1, 5);
 krm.Rand.randInt(5);
+krm.Rand.randInt(1, 5);
 ```
- - n1 ~ n2 int
  - 0 ~ n1 int
+ - n1 ~ n2 int
 
 > fromArray(arr: any[]): any
 ```js
@@ -155,7 +162,7 @@ krm.Rand.fromArray([1, 2, 3]);
    - now: timestamp (=Date.now())
 
  - reply
-   - 메소드들은 reply객체를 리턴함 -> .text().text() 등등 가능
+   - 메소드들은 reply객체를 리턴함 -> .text().text() 등등 가능 [.kakaolink() 제외]
    - text(msg): replier.reply(msg);
    - replyTo(room, msg): replier.reply(room, msg);
    - randomText(t1, t2, ..): 랜덤으로 대답
@@ -165,7 +172,7 @@ krm.Rand.fromArray([1, 2, 3]);
 
  - next
    - krm에서 기본적으론 한번 리스너를 실행한 후 멈춥니다. (뒤꺼 생략)
-   - 한 챗으로 여러 명령어를 부를 수 있거나, use를 쓸 데에는 필수
+   - 한 루트에 여러 리스너를 달 때나, use를 쓸 데에는 필수
 
 ```js
 krm.use((msg, reply, next) => {
