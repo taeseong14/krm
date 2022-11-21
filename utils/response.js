@@ -28,8 +28,8 @@
  */
 /**
  * @callback kakaolink
- * @param {number} templete_num
- * @param {object} [templete_args]
+ * @param {number} template_id
+ * @param {object} [template_args]
  * @param {string} [room]
  * @returns {boolean}
  */
@@ -93,7 +93,7 @@ function response(room, msg, sender, igc, replier, imageDB, packageName) {
             return this.handlerReply;
         },
         /** @type {kakaolink} */
-        kakaolink: (templete_num, templete_args, room) => { // 모듈 넣기 전
+        kakaolink: (template_id, tamplate_args, room) => { // 모듈 넣기 전
             this.handlerReply.text('github.com/taeseong14/krm-modules의 krm-kakaolink 모듈을 받아주세요.');
         },
         /** @type {delay} */

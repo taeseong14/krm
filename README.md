@@ -31,7 +31,7 @@ krm.add('/안녕', (msg, reply) => {
 ##### 랜덤 대답
 ```js
 krm.add('/안녕', (msg, reply) => {
-    reply.randomText('안녕!', sender + '님 안녕하세요!');
+    reply.randomText('안녕!', msg.sender + '님 안녕하세요!');
 });
 ```
 
@@ -39,7 +39,7 @@ krm.add('/안녕', (msg, reply) => {
 ```js
 krm.add('/주기 [:person] [:money]', (msg, reply) => {
     let { person, money } = msg.params;
-    reply.text(person + '님에게 ' + money + '원 을 주셨어요.');
+    reply.text(person + '님에게 ' + money + '원 을 주었어요.');
 });
 ```
 
@@ -48,9 +48,8 @@ krm.add('/주기 [:person] [:money]', (msg, reply) => {
 krm.use(require('krm-kakaolink')(email, pw, apikey, url));
 
 krm.add('/카링', (msg, reply) => {
-    reply.kakaolink(num, {
-        title: '카링 테스트',
-        desc: '안녕반갑다'
+    reply.kakaolink(template_id, {
+        ...template_args
     });
 });
 ```
@@ -166,7 +165,7 @@ krm.Rand.fromArray([1, 2, 3]);
    - text(msg): replier.reply(msg);
    - replyTo(room, msg): replier.reply(room, msg);
    - randomText(t1, t2, ..): 랜덤으로 대답
-   - kakaolink(templete_num, { ...args }): 해당 방으로 카카오링크 전송
+   - kakaolink(template_id, { ...template_args }): 해당 방으로 카카오링크 전송
    - delay(ms): java.lang.Thread.sleep(ms);
    - read(): replier.markAsRead();
 
