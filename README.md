@@ -79,6 +79,7 @@ krm.add('/hi', (msg, reply) => {
  - handler: [핸들러](#handler)
 
 > use(...handler: Handler)
+> 
 > use(krm-modules)
 ```js
 krm.use((msg, reply, next) => {
@@ -126,6 +127,7 @@ krm.File.writeJson(path, object);
 #### Rand
 
 > range(n1: number): number
+> 
 > range(n1: number, n2: number): number
 ```js
 krm.Rand.range(10);
@@ -135,6 +137,7 @@ krm.Rand.range(1, 10);
  - n1 ~ n2 range
 
 > randInt(n1: number): number
+> 
 > randInt(n1: number, n2: number): number
 ```js
 krm.Rand.randInt(5);
