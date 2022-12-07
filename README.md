@@ -10,7 +10,7 @@
 ## 사용
 
 ### 다운로드, 설치
- - [Release v1.1.0](https://github.com/taeseong14/krm/releases/tag/1.1.0) 에서 krm.zip 다운로드
+ - [Release v1.1.1](https://github.com/taeseong14/krm/releases/tag/1.1.1) 에서 krm.zip 다운로드
  - /sdcard/msgbot/global_modules/에 압축 풀기
 
 ### 모듈 불러오기

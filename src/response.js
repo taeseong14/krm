@@ -13,18 +13,18 @@
 /**
  * @callback text
  * @param {...string} text
- * @returns {import('./').Reply}
+ * @returns {import('.').Reply}
  */
 /**
  * @callback textTo
  * @param {string} room 
  * @param {string} text 
- * @returns {import('./').Reply}
+ * @returns {import('.').Reply}
  */
 /**
  * @callback randomText
  * @param  {...string}
- * @returns {import('./').Reply}
+ * @returns {import('.').Reply}
  */
 /**
  * @callback kakaolink
@@ -36,11 +36,11 @@
 /**
  * @callback delay
  * @param {number} ms miliseconds
- * @returns {import('./').Reply}
+ * @returns {import('.').Reply}
  */
 /**
  * @callback read
- * @returns {import('./').Reply}
+ * @returns {import('.').Reply}
  */
 
 

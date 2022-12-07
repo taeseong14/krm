@@ -1,5 +1,6 @@
 (function () {
-    let { add, use, file, rand, date, ify, response } = require('./utils');
+    let { add, use, file, rand, date, ify } = require('./src/utils');
+    const response = require('./src/response');
 
     function Krm() {
         this.handlers = [];
@@ -12,7 +13,7 @@
         this.date = date;
         this.ify = ify;
 
-        /** @type {import('./utils/response')} */
+        /** @type {import('./src/response')} */
         this.response = response.bind(this);
 
         this.prefix = '';

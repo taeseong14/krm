@@ -2,7 +2,7 @@
     /**
      * Add Route
      * @param {string | RegExp | string[] | RegExp[]} pattern 
-     * @param {...import('./').Handler} handler
+     * @param {...import('.').Handler} handler
      * @returns {void}
      */
     function add(pattern, /** ... */handler) {

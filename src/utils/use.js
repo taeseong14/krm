@@ -1,7 +1,7 @@
 (function () {
     /**
      * Add Route with Pattern '*'
-     * @param {...import('./').Handler}
+     * @param {...import('.').Handler}
      * @returns {void}
      */
     function use(/** ...handler */) {

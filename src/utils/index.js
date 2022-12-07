@@ -33,8 +33,6 @@ module.exports = {
 
     use: require('./use'),
 
-    response: require('./response'),
-
     file: require('./file'),
 
     rand: require('./rand'),
