@@ -1,4 +1,4 @@
-# Krm - Kakaotalkbot Route Module [v1.1.1]
+# Krm - Kakaotalkbot Route Module [v1.1.2]
 
 카카오톡봇을 전반적으로 관리해주는 모듈. [패치노트](patchnote.md)
 
@@ -10,7 +10,7 @@
 ## 사용
 
 ### 다운로드, 설치
- - [Release v1.1.1](https://github.com/taeseong14/krm/releases/tag/1.1.1) 에서 krm.zip 다운로드
+ - [Release v1.1.2](https://github.com/taeseong14/krm/releases/tag/1.1.2) 에서 krm.zip 다운로드
  - /sdcard/msgbot/global_modules/에 압축 풀기
 
 ### 모듈 불러오기
@@ -102,6 +102,13 @@ krm.use(require('krm-kakaolink'));
  - 항상 실행 (이미 break됐을 땐 제외)
    - express의 cookie-parser처럼 유동적으로 모듈을 넣거나 핸들러 프로퍼티를 원하는 대로 바꾸기 가능 (예제: [example_2](examples/2_use.js))
  - handler: [핸들러](#handler)
+
+> onerr(handler: Handler)
+```js
+krm.onerr = (err) => Log.e(err);
+```
+ - 에러가 났을 때 기본적으로 실행하는 함수
+
 
 #### File
 

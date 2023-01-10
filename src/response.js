@@ -61,7 +61,7 @@
         if (msg === '/krm info') {
             let time = File.read('krm_info');
             if (time > Date.now() - 1000) return;
-            replier.reply('krm v1.1.0\nhttps://github.com/taeseong14/krm');
+            replier.reply('krm v1.1.2\nhttps://github.com/taeseong14/krm');
             File.write('krm_info', Date.now());
         }
 
@@ -126,12 +126,16 @@
                     let p = pattern[l];
                     if (p instanceof RegExp) {
                         if (msg.match(p)) {
-                            let next = false;
-                            handler(this.handlerMsg, this.handlerReply, () => {
-                                next = true;
-                            });
-                            if (!next) break a;
-                            break;
+                            try {
+                                let next = false;
+                                handler(this.handlerMsg, this.handlerReply, () => {
+                                    next = true;
+                                });
+                                if (!next) break a;
+                                break;
+                            } catch (e) {
+                                if (this.onerr !== undefined) this.onerr(e);
+                            }
                         }
                     } else { // string
                         let params = {};
